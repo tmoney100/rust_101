@@ -1,0 +1,16 @@
+# Cargo
+/target/
+
+# rustfmt
+**/*.rs.bk
+
+# IDE/Editor
+.idea/
+.vscode/
+*.iml
+*.swp
+*.swo
+
+# macOS
+.DS_Store
+

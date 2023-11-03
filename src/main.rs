@@ -8,9 +8,10 @@
 // }
 
 
-mod viking;
+// mod viking;
 // use viking;
 
 fn main() {
-  viking::viking::example()
+  // viking::viking::example()
+  println!("asdf")
 }
