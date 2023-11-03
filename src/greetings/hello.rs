@@ -8,8 +8,7 @@ struct Point {
   y: i32
 }
 
-const p: Point = Point {x: 4, y: 3};
-println!("x: {}. y: {}", p.x, p.y);
+
 
 // Enum(eration)
 enum Direction {
@@ -19,15 +18,10 @@ enum Direction {
   West
 }
 
-const dir: Direction = Direction::North;
-
 // fn
 fn add(a: i32, b:i32) -> i32 {
   a + b
 }
-
-const r: i32 = add(1,3);
-println!("result: {}", r);
 
 // mod(ule) - namespace that groups related definitions
 pub mod utils {
@@ -35,6 +29,7 @@ pub mod utils {
     println!("Hello, World!")
   }
   pub fn test () {
+    const dir: Direction = Direction::North;
     match dir {
       Direction::North => println!("Going North!"),
       Direction::South => println!("Going South"),
@@ -58,9 +53,6 @@ impl Printable for Person {
   }  
 }
 
-const person: Person = Person { name: String::from("Alice") };
-person::print!();
-
 // impl(ementation)
 struct Circle {
   radius: f64
@@ -72,8 +64,7 @@ impl Circle {
   }
 }
 
-const c: Cicle = Circle { radius: 3.0 };
-println!("Area: {}", c.area());
+
 
 // const(ant) - unchangeable 
 const MAX_VALUE: i32 = 100;
@@ -83,9 +74,6 @@ static GLOBAL_VAR: i32 = 10;
 type Integer = i32;
 type Int = Integer;
 
-const num: Integer = 42;
-const num2: Int = 43;
-println!("Number: {}, {}", num, num2);
 
 // macro - 
 macro_rules! say_hello {
@@ -130,7 +118,18 @@ impl Point {
 }
 
 
-// fn main () {
-//   utils::print_hello();
-//   utils::test();
-// }
+pub fn main2() {
+  utils::print_hello();
+  utils::test();
+  const p: Point = Point {x: 4, y: 3};
+  println!("x: {}. y: {}", p.x, p.y);
+  const r: i32 = add(1,3);
+  println!("result: {}", r);
+  const person: Person = Person { name: String::from("Alice") };
+  person::print!();
+  const c: Cicle = Circle { radius: 3.0 };
+  println!("Area: {}", c.area());
+  const num: Integer = 42;
+  const num2: Int = 43;
+  println!("Number: {}, {}", num, num2);
+}
