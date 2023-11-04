@@ -1,6 +1,5 @@
 use std::collections::HashMap;
 
-
 fn build_scores(scores: &mut HashMap<String, i32>) {
   scores.insert(String::from("Blue"), 10);
   scores.insert(String::from("Red"), 50);
@@ -17,7 +16,8 @@ fn build_scores(scores: &mut HashMap<String, i32>) {
 }
 
 fn main () {
-  let mut scores = HashMap::new();
+  let mut scores: HashMap<String, i32> = HashMap::new();
+  // let scores: HashMap<String, i32> = HashMap::new();
 
   build_scores(&mut scores);
 
@@ -28,10 +28,26 @@ fn main () {
   
   let blue = scores.get("Blue");
   println!("b: {:?}", blue);
+  let v = scores.entry("Blue".to_string());
+  println!("c: {:?}", v);
 
+  let mut initial_order = String::new();
+  for key in scores.keys() {
+    initial_order.push_str(key);
+  }
 
-  for (key, value) in &scores {
-    println!("k:{}", key);
-    println!("v:{}", value);
+  for _ in 0..100_000_000 {
+    let mut new_order = String::new();
+
+    let scores_clone = scores.clone();
+    for key in scores_clone.keys() {
+      new_order.push_str(key);
+    }
+    
+    if initial_order != new_order {
+      println!("Initial Order: {}", initial_order);
+      println!("New Order: {}", new_order);
+      println!("order differs");
+    }
   }
 }
