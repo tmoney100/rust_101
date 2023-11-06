@@ -7,11 +7,12 @@
 //   // greetings::hello::utils::test();
 // }
 
-
+mod generic;
 // mod viking;
 // use viking;
 
 fn main() {
   // viking::viking::example()
-  println!("asdf")
+  // println!("__root__/src/main.rs");
+  generic::date::today_to_string(2000, 10, 3);
 }
